@@ -1,0 +1,36 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Pokemon {
+  id: ID!
+  name: String!
+  description: String!
+  Category: String!
+  Type: [String!]!
+  Abilities: [String!]!
+}
+
+input idToModify {
+  id: ID!
+}
+
+input newPokemon {
+  id: ID
+  name: String!
+  description: String!
+  Category: String!
+  Type: [String!]!
+  Abilities: [String!]!
+}
+
+type Query {
+  pokemon(id: ID!): Pokemon
+  pokemons: [Pokemon!]!
+}
+
+type Mutation {
+  addPokemon(input: newPokemon!): Pokemon!
+  updatePokemon(input: newPokemon!): Pokemon!
+  deletePokemon(input: idToModify!): Boolean!
+}
